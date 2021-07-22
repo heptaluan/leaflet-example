@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+  <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+  <div id="map" style="width:900px; height:580px"></div>
+
+  <script>
+
+    // Creating map options
+    var mapOptions = {
+      center: [17.385044, 78.486671],
+      zoom: 10,
+      zoomControl: false
+    }
+    var map = new L.map('map', mapOptions); // Creating a map object
+
+    // Creating a Layer object
+    var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    map.addLayer(layer);   // Adding layer to the map
+
+    // zoom control options
+    var zoomOptions = {
+      zoomInText: '1',
+      zoomOutText: '0',
+    };
+    var zoom = L.control.zoom(zoomOptions);   // Creating zoom control
+    zoom.addTo(map);   // Adding zoom control to the map
+
+  </script>
+
+</body>
+
+</html>

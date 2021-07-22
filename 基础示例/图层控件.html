@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+  <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+  <div id="map" style="width:900px; height:580px"></div>
+
+  <script>
+
+    var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { minZoom: 0, maxZoom: 18, attribution: 'OSM', });
+    var tdt = new L.TileLayer('http://t{s}.tianditu.cn/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles', { maxZoom: 18, minZoom: 0, attribution: '天地图', subdomains: ["0", "1", "2", "3", "4", "5", "6", "7"] });
+
+    var baseLayers = {
+      "osm": osm,
+      "tdt": tdt
+    };
+
+    var mapOptions = {
+      center: [39.73, -104.99],
+      zoom: 10,
+      layers: [osm, tdt]
+    }
+
+    var map = new L.map('map', mapOptions);
+
+    L.control.layers(baseLayers).addTo(map);
+
+  </script>
+  </script>
+
+
+</body>
+
+</html>

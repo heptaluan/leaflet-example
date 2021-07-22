@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+  <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+  <div id="map" style="width:900px; height:580px"></div>
+
+  <script>
+
+    // 配置地图选项
+    var mapOptions = {
+      center: [17.385044, 78.486671],
+      zoom: 7
+    }
+
+    // 创建地图对象
+    var map = new L.map('map', mapOptions)
+
+    // 创建图层对象
+    var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+
+    // 在地图上添加图层
+    map.addLayer(layer)
+
+    // 添加标记组
+    var hydMarker = new L.Marker([17.385044, 78.486671])
+    var vskpMarker = new L.Marker([17.686816, 83.218482])
+    var vjwdMarker = new L.Marker([16.506174, 80.648015])
+
+    // 保存绘制多边形的顶点
+    var latlngs = [
+      [17.385044, 78.486671],
+      [16.506174, 80.648015],
+      [17.686816, 83.218482]
+    ]
+
+    // 创建多边形
+    var polygon = L.polygon(latlngs, { color: 'red' })
+
+    // 创建功能组
+    var featureGroup = L.featureGroup([hydMarker, vskpMarker, vjwdMarker, polygon]);
+
+    featureGroup.setStyle({ color: 'blue', opacity: .5 })
+
+    featureGroup.bindPopup('Feature Group')
+
+    // 将图层组添加到地图当中
+    featureGroup.addTo(map)
+
+  </script>
+
+</body>
+
+</html>

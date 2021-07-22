@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+  <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+  <div id="map" style="width:900px; height:580px"></div>
+
+  <script>
+    // Creating map options
+    var mapOptions = {
+      center: [16.506174, 80.648015],
+      zoom: 7
+    }
+    // Creating a map object
+    var map = new L.map('map', mapOptions);
+
+    // Creating a Layer object
+    var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+    // Adding layer to the map
+    map.addLayer(layer);
+
+    // Creating latlng object
+    var latlang = [
+      [[17.385044, 78.486671], [16.506174, 80.648015], [17.686816, 83.218482]],
+      [[13.082680, 80.270718], [12.971599, 77.594563], [15.828126, 78.037279]]
+    ];
+
+    // Creating poly line options
+    var multiPolyLineOptions = { color: 'red' };
+
+    // Creating multi poly-lines
+    var multipolyline = L.multiPolyline(latlang, multiPolyLineOptions);
+
+    // Adding multi poly-line to map
+    multipolyline.addTo(map);
+  </script>
+
+</body>
+
+</html>
