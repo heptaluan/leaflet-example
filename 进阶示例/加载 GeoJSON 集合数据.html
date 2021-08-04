@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <link
+      rel="stylesheet"
+      href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"
+    />
+    <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <div id="map" style="width: 900px; height: 580px"></div>
+    <script>
+      var mapOptions = {
+        center: [30.864942016, 112.2882028929],
+        zoom: 5,
+      }
+
+      var map = new L.map('map', mapOptions)
+
+      var layer = new L.TileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+      )
+
+      map.addLayer(layer)
+
+      var myLines = {
+        type: 'GeometryCollection',
+        geometries: [
+          {
+            type: 'LineString',
+            coordinates: [
+              [116.2882028929, 31.864942016],
+              [115.2882028929, 35.864942016],
+              [117.2882028929, 31.864942016],
+            ],
+          },
+          {
+            type: 'LineString',
+            coordinates: [
+              [117.2882028929, 29.864942016],
+              [112.2882028929, 22.864942016],
+              [117.2882028929, 21.864942016],
+            ],
+          },
+        ],
+      }
+
+      L.geoJson(myLines).addTo(map)
+    </script>
+  </body>
+</html>

@@ -25,11 +25,20 @@
     var map = new L.map('map', mapOptions)
 
     var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+    var marker = L.marker([16.506174, 80.648015]).addTo(map)
+
+    marker.on('click', function(e) {
+      console.log(e)
+    })
 
     map.addLayer(layer)
 
+    var pop = L.popup()
     map.on("click", function (e) {
       new L.Marker([e.latlng.lat, e.latlng.lng]).addTo(map)
+      pop.setLatLng(e.latlng)
+        .setContent(e.latlng.toString())
+        .addTo(map)
     })
 
   </script>

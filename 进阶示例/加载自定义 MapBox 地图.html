@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+  <div id="map" style="width: 900px; height: 580px"></div>
+  <script>
+    // Creating map options
+    var mapOptions = {
+      center: [48.862, 2.346],
+      zoom: 12,
+    }
+
+    // Creating a map object
+    var map = new L.map('map', mapOptions)
+
+    // Creating a Layer object
+    var layer = new L.TileLayer(
+      'https://api.mapbox.com/styles/v1/hepta/ckrwv6vzl1ku217qm4l8k6jst/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaGVwdGEiLCJhIjoiY2tyd3YxenU1MGtmOTJ2cGExZzk4MHEyYSJ9.4gDTR2aDG0GVBnSmV6Gg5A'
+    )
+
+    // Adding layer to the map
+    map.addLayer(layer)
+  </script>
+</body>
+
+</html>
